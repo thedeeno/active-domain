@@ -1,8 +1,23 @@
 # Active::Domain
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/active/domain`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Motivation
 
-TODO: Delete this and the text above, and describe your gem
+Today, Rails makes the assumption that your business domain lives inside a web application. This assumption is awkward when you take a product-wide perspective; many tools need convenient access to a product's business logic but don't need the complexity of web concepts. Put another way, mixing web-application concepts with domain concepts often makes no sense. Despite, this is the default architecture of rails today. The `active-domain` gem family aims to alleviate this pain.
+
+### Problem: A Concrete Use-Case
+
+Suppose you want to write a single suite of acceptance tests for your entire product. These acceptance tests will verify your entire stack from web, mobile, and cli interfaces; to push, sms, and email notifications; to perhaps even logging and metrics collection. Running these tests often requires 4 steps:
+
+1) Initialize the bottom of the stack (often the data-store(s))
+2) Harness the interfaces under test
+3) Exercise
+4) Verify results via the above (or some other) interface
+
+It's convenient to use your business domain to do #1 - the api is clean and services/factories can be leveraged for maximal productivity. Conversely, driving your API layer (or some other application) to do this setup is often painful. This application will have authentication, authorization, session, and access-pattern concerns that are completely irrelevant and frustrating to configure/workaround.
+
+### Solution
+
+Make it convenient for your domain to live outside your web/api application. If your domain lives outside your web/api application, you'll often fall-into creating the appropriate boundaries so you can easily drive it in a variety of contexts.
 
 ## Installation
 
