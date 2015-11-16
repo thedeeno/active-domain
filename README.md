@@ -1,5 +1,7 @@
 # Active::Domain
 
+Make it easy to model your domain as a library and not an application
+
 ## Motivation
 
 Today, Rails makes the assumption that your business domain lives inside a web application. This assumption is awkward when you take a product-wide perspective; many tools need convenient access to a product's business logic but don't need the complexity of web concepts. Put another way, mixing web-application concepts with domain concepts often makes no sense. Despite, this is the default architecture of rails today. The `active-domain` gem family aims to alleviate this pain.
@@ -8,10 +10,10 @@ Today, Rails makes the assumption that your business domain lives inside a web a
 
 Suppose you want to write a single suite of acceptance tests for your entire product. These acceptance tests will verify your entire stack from web, mobile, and cli interfaces; to push, sms, and email notifications; to perhaps even logging and metrics collection. Running these tests often requires 4 steps:
 
-1) Initialize the bottom of the stack (often the data-store(s))
-2) Harness the interfaces under test
-3) Exercise
-4) Verify results via the above (or some other) interface
+1. Initialize the bottom of the stack (often the data-store(s))
+2. Harness the interfaces under test
+3. Exercise
+4. Verify results via the above (or some other) interface
 
 It's convenient to use your business domain to do #1 - the api is clean and services/factories can be leveraged for maximal productivity. Conversely, driving your API layer (or some other application) to do this setup is often painful. This application will have authentication, authorization, session, and access-pattern concerns that are completely irrelevant and frustrating to configure/workaround.
 
